@@ -1,12 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Math;
 
 namespace MyFirstWindowsApp
 {
@@ -15,16 +9,28 @@ namespace MyFirstWindowsApp
         public Form1()
         {
             InitializeComponent();
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
+            label2.Text = "0";
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
+            double x, y;
 
+            if (!double.TryParse(textBox1.Text, out x))
+            {
+                label2.Text = "Ошибка ввода X!";
+                return;
+            }
+
+            if (!double.TryParse(textBox2.Text, out y))
+            {
+                label2.Text = "Ошибка ввода Y!";
+                return;
+            }
+
+            double result = (3 * x + 6 * Cos(y)) / 2;
+
+            label2.Text = $"Результат: {result:F4}";
         }
     }
 }
